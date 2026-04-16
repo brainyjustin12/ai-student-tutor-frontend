@@ -3,6 +3,8 @@ import api from "../services/api";
 import toast from "react-hot-toast";
 import { FiCamera, FiEdit3, FiSave, FiUser } from "react-icons/fi";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://ai-student-tutor-backend.onrender.com";
+
 export default function Profile() {
   const [profile, setProfile] = useState(null);
   const [topicStats, setTopicStats] = useState({});
@@ -52,7 +54,7 @@ export default function Profile() {
         <div className="mb-6 flex items-center gap-6">
           <div className="relative">
             <div className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-full bg-primary-100 text-3xl dark:bg-primary-900/30">
-              {profile?.avatar ? <img src={`http://localhost:5000${profile.avatar}`} alt="" className="h-full w-full object-cover" /> : profile?.name?.[0]?.toUpperCase()}
+              {profile?.avatar ? <img src={`${backendUrl}${profile.avatar}`} alt="" className="h-full w-full object-cover" /> : profile?.name?.[0]?.toUpperCase()}
             </div>
             {editing && (
               <label className="absolute -bottom-1 -right-1 cursor-pointer rounded-full bg-primary-600 p-1.5 text-white hover:bg-primary-700">
